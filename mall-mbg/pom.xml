@@ -14,6 +14,7 @@
     <packaging>jar</packaging>
 
     <name>mall-mbg</name>
+    <description>provide orm api</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
