@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>mall-common</module>
+        <module>mall-mbg</module>
     </modules>
     <packaging>pom</packaging>
 
