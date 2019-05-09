@@ -54,15 +54,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 // 允许静态资源的访问
-                .antMatchers(HttpMethod.GET,
-                        "/",
-                        "/*.html",
-                        "/favicon.ico",
-                        "/**/*.html",
-                        "**/*.css",
-                        "**/*.js",
-                        "/swagger-resources/**",
-                        "/v2/api-docs/**").permitAll()
+//                .antMatchers(HttpMethod.GET,
+//                        "/",
+//                        "/*.html",
+//                        "/favicon.ico",
+//                        "/**/*.html",
+//                        "**/*.css",
+//                        "**/*.js",
+//                        "/swagger-resources/**",
+//                        "swagger-ui.html#/**",
+//                        "/v2/api-docs/**").permitAll()
+                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
+                .antMatchers("/v2/**").permitAll()
                 // 允许登录和注册页面的访问
                 .antMatchers("/admin/login", "admin/register").permitAll()
                 // 跨域请求先进行一次 options 请求

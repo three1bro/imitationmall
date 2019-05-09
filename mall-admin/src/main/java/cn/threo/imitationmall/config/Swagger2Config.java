@@ -29,7 +29,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.threo.imitationmall.dao.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cn.threo.imitationmall.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(securitySchemes())
@@ -38,7 +38,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("cn.threo.imitationmall.dao 后台系统")
+                .title("cn.threo.imitationmall 后台系统")
                 .description("mall后台模块")
                 .version("1.0")
                 .build();
