@@ -2,6 +2,7 @@ package cn.threo.imitationmall.controller;
 
 import cn.threo.imitationmall.common.CommonPage;
 import cn.threo.imitationmall.common.CommonResult;
+import cn.threo.imitationmall.dto.UmsAdminLoginParam;
 import cn.threo.imitationmall.dto.UmsAdminParam;
 import cn.threo.imitationmall.model.UmsAdmin;
 import cn.threo.imitationmall.model.UmsPermission;
@@ -48,8 +49,8 @@ public class UmsAdminController {
 
     @ApiOperation("用户登录且返回Token")
     @PostMapping("/login")
-    public CommonResult login(@RequestBody UmsAdminParam umsAdminParam, BindingResult result) {
-        String token = adminService.login(umsAdminParam.getUsername(), umsAdminParam.getPassword());
+    public CommonResult login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
+        String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
         if (token == null) {
             CommonResult.validateFailed("用户名或密码错误！");
         }
