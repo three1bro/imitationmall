@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +40,7 @@ public class UmsAdminController {
 
     @ApiOperation("用户注册")
     @PostMapping("/register")
-    public CommonResult<UmsAdmin> register(@RequestBody UmsAdminParam umsAdminParam, BindingResult result) {
+    public CommonResult<UmsAdmin> register(@RequestBody @Valid UmsAdminParam umsAdminParam, BindingResult result) {
         UmsAdmin umsAdmin = adminService.register(umsAdminParam);
         if (umsAdmin == null) {
             CommonResult.failed();
@@ -49,10 +50,10 @@ public class UmsAdminController {
 
     @ApiOperation("用户登录且返回Token")
     @PostMapping("/login")
-    public CommonResult login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
+    public CommonResult login(@RequestBody @Valid UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
         String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
         if (token == null) {
-            CommonResult.validateFailed("用户名或密码错误！");
+            return CommonResult.validateFailed("用户名或密码错误！");
         }
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", token);

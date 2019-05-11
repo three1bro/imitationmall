@@ -5,6 +5,9 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * @author threo
+ */
 @Data
 public class UmsAdminLoginParam {
     @ApiModelProperty(value = "用户名", required = true)
